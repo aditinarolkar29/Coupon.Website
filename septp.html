@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Month Coupons 💌</title>
+<style>
+:root {
+  --pastel-pink: #ffafccff;
+  --fairy-tale: #ffc8ddff;
+  --thistle: #cdb4dbff;
+  --uranian-blue: #bde0feff;
+  --light-sky-blue: #a2d2ffff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--light-sky-blue), var(--fairy-tale));
+  color: #444;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #556bff;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#countdown {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  font-weight: bold;
+  color: #556bff;
+}
+
+#days-left {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #ff4d6d;
+}
+
+.coupon {
+  display: none;
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--pastel-pink), var(--fairy-tale));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  border: 2px dashed #fff;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.coupon::before,
+.coupon::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.coupon::before { left: -15px; }
+.coupon::after { right: -15px; }
+
+.coupon .validity {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.coupon.today {
+  display: block;
+  opacity: 1;
+  transform: scale(1.02);
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1.02); }
+}
+
+button.redeem {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff77aa;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.redeem:hover {
+  background-color: #ff4d88;
+  transform: scale(1.05);
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+</style>
+</head>
+<body>
+
+<h1>Birthday Month Coupons 💌</h1>
+<p>
+Happy Birthday Month! Every day you’ll find a small gift from my heart 💕. <br/> Only today’s coupon is revealed!
+</p>
+
+<div id="days-left">🎉 Days left to your birthday: <span id="daysCounter">...</span></div>
+<div id="countdown">⏳ Next coupon unlocks in ...</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div id="coupons-container">
+   <div class="coupon"> Day 1: “Heart-to-Heart” Coupon: You can pick a night where I will just listen to you talk about anything.</div>
+     <br/> 
+     <div class="coupon"> Day 2: Love Bite Mark: Redeem for a mark you will remember.</div> 
+     <br/> 
+     <div class="coupon"> Day 3: Yes to You Day: Redeem for a day where you call all the shots. (Since we are meeting and ig you know my limits, so apart from that "AS YOU SAY SIR!")</div> 
+     <br/> 
+     <div class="coupon"> Day 4: Cooking For You Coupon: Redeem for a day where I will cook something just for you</div>
+      <br/> 
+      <div class="coupon"> Day 5: Truth or Dare: Redeem to ask me any (spicy) question or dare me</div>
+       <br/> 
+       <div class="coupon"> Day 6: Secret Reveal: Redeem and I will tell you one personal/spicy secret. 
+       </div>
+       <br/> 
+       <div class="coupon"> Day 7: “Describe You” Coupon: I will describe exactly how I for you.</div> 
+       <br/> 
+       <div class="coupon"> Day 8: Shower Together: Redeem this whenever you want and we can have online/offline shower Together. </div> 
+       <br/> 
+       <div class="coupon"> Day 9: 5 Reasons I Love You: Redeem to get 5 detailed reasons, straight from me. </div> 
+       <br/> 
+       <div class="coupon"> Day 10: No Fight Day: Redeem to skip any fight instantly.</div> 
+       <br/> 
+       <div class="coupon"> Day 11: Apology Coupon: Redeem this whenever you want me to apologize sweetly, no excuses, only love. (even if i am not wrong)</div> 
+       <br/> 
+       <div class="coupon"> Day 12: Movie Pick: You get to pick the movie without me arguing</div> 
+       <br/> 
+       <div class="coupon"> Day 13: Sweet Treat: I’ll order your favorite dessert/food.</div> 
+       <br/> 
+       <div class="coupon"> Day 14: “24-Hour Spoil Me” Coupon: You get to boss me around the whole day.</div> 
+       <br/> 
+       <div class="coupon"> Day 15: Karaoke Night: I’ll sing (seriously or silly) for you.</div> 
+       <br/> 
+       <div class="coupon"> Day 16: Validation Day: Redeem when you need unlimited “I love you” and compliments </div> 
+       <br/> 
+       <div class="coupon"> Day 17: Comfort Day: I’ll pamper you completely a whole day.</div> 
+       <br/> 
+       <div class="coupon"> Day 18: Spicy Dare: I’ll do one spicy dare on text/call that you set.</div> 
+       <br/> 
+       <div class="coupon"> Day 19: “20 Questions” Coupon: We play that classic Q&A until one of us blushes.</div> 
+       <br/> 
+       <div class="coupon"> Day 20: “Fantasy Talk” Coupon: We will share one fantasy of us and we can talk about it.</div> 
+       <br/> 
+       <div class="coupon"> Day 21: Snap Coupon: I’ll send you one unfiltered, no-makeup, raw selfie just for you.</div> 
+       <br/> 
+       <div class="coupon"> Day 22: “Spicy Photo Hint” Coupon: I’ll send a teasing but tasteful picture (just for you).</div> 
+       <br/> 
+       <div class="coupon"> Day 23: Mini Vlog Coupon: I’ll record short clips of my day and send them like a vlog.</div> 
+       <br/> 
+       <div class="coupon"> Day 24: “No Sadness Day” Coupon – If you’re upset, I’ll dedicate the whole day to cheering you up.</div> 
+       <br/> 
+       <div class="coupon"> Day 25: All-Day Teasing: I’ll keep sending you blush-worthy texts all day (u can send too).</div> 
+       <br/> 
+       <div class="coupon"> Day 26: Cheer-Up: Redeem this if you’re sad, and I’ll do anything to make you smile.</div> 
+       <br/> 
+       <div class="coupon"> Day 27: Secret Memory Hunt: I’ll share hidden pics/screenshots/moments from our chats you forgot.</div> 
+       <br/> 
+       <div class="coupon"> Day 28: Mood Flip Coupon: You choose: do you want me sweet, naughty, or romantic today?</div> 
+       <br/> 
+       <div class="coupon"> Day 29: Selfie Hour: Every hour, you get one new selfie of me.</div> <br/>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+const confettiLib = window.confetti;
+
+function showTodayCoupon() {
+  const today = new Date();
+  const month = today.getMonth(); // 0=Jan, 8=Sept
+  const day = today.getDate();
+  const coupons = document.querySelectorAll(".coupon");
+  coupons.forEach(c => c.classList.remove("today"));
+
+  if(month === 8 && day >= 1 && day <= 29) {
+    coupons[day-1].classList.add("today");
+    confettiBurst();
+  }
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const nextDay = new Date();
+  nextDay.setDate(now.getDate() + 1);
+  nextDay.setHours(0,0,0,0); // midnight
+  const diff = nextDay - now;
+  const hours = Math.floor(diff / (1000*60*60));
+  const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const secs = Math.floor((diff % (1000*60)) / 1000);
+  document.getElementById("countdown").innerText =
+    `⏳ Next coupon unlocks in ${hours}h ${mins}m ${secs}s`;
+
+  const birthday = new Date(now.getFullYear(), 8, 30);
+  const diffDays = Math.ceil((birthday - now)/(1000*60*60*24));
+  document.getElementById("daysCounter").innerText = diffDays;
+}
+
+function confettiBurst() {
+  const duration = 2 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confettiLib({
+      particleCount: 5,
+      startVelocity: 30,
+      spread: 360,
+      origin: { x: Math.random(), y: Math.random() - 0.2 }
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
+
+showTodayCoupon();
+updateCountdown();
+setInterval(() => { showTodayCoupon(); updateCountdown(); }, 1000);
+</script>
+
+</body>
+</html>
